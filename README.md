@@ -8,6 +8,12 @@ Run with Python 3.12+ and no dependencies:
 python timelink.py examples/network.json
 ```
 
+Check the solver against an independent graph-search replay over generated timelines:
+
+```sh
+python -m unittest discover -s tests -v
+```
+
 The example starts with a route from `api` to `worker`, removes a link, then restores it. Queries return `true`, `false`, `false`, `true` as the network changes.
 
 An active edge spans an interval of event positions. A segment tree assigns each interval to a small number of time ranges. Traversing that tree adds the relevant edges to a union-find structure; when traversal returns, it rolls the structure back to its earlier snapshot. This avoids rebuilding the whole graph for each query. The implementation uses union by size and deliberately omits path compression so rollback remains simple.
