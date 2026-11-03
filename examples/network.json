@@ -1,0 +1,14 @@
+{
+  "nodes": ["api", "queue", "worker", "db"],
+  "events": [
+    {"kind": "add", "u": "api", "v": "queue"},
+    {"kind": "add", "u": "queue", "v": "worker"},
+    {"kind": "query", "u": "api", "v": "worker"},
+    {"kind": "remove", "u": "queue", "v": "worker"},
+    {"kind": "query", "u": "api", "v": "worker"},
+    {"kind": "add", "u": "worker", "v": "db"},
+    {"kind": "query", "u": "api", "v": "db"},
+    {"kind": "add", "u": "queue", "v": "worker"},
+    {"kind": "query", "u": "api", "v": "db"}
+  ]
+}
